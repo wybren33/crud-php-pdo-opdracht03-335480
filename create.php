@@ -13,38 +13,32 @@ try {
     echo $e->getMessage();
 }
 
-$sql = "INSERT INTO Persoon (Id
-                            ,Voornaam
-                            ,Tussenvoegsel
-                            ,Achternaam
-                            ,telefoonnummer
-                            ,straatnaam
-                            ,huisnummer
-                            ,woonplaats
-                            ,postcode
-                            ,landnaam)
+$sql = "INSERT INTO achtbaan (Id
+                            ,achtbaan
+                            ,pretpark
+                            ,land
+                            ,snelheid
+                            ,hoogte
+                            ,datum
+                            ,cijfer)
         VALUES              (NULL
-                            ,:firstname
-                            ,:infix
-                            ,:lastname
-                            ,:telefoonnummer
-                            ,:straatnaam
-                            ,:huisnummer
-                            ,:woonplaats
-                            ,:postcode
-                            ,:landnaam);";
+                            ,:achtbaan
+                            ,:pretpark
+                            ,:land
+                            ,:snelheid
+                            ,:hoogte
+                            ,:datum
+                            ,:cijfer);";
 
 $statement = $pdo->prepare($sql);
 
-$statement->bindValue(':firstname', $_POST['firstname'], PDO::PARAM_STR);
-$statement->bindValue(':infix', $_POST['infix'], PDO::PARAM_STR);
-$statement->bindValue(':lastname', $_POST['lastname'], PDO::PARAM_STR);
-$statement->bindValue(':telefoonnummer', $_POST['telefoonnummer'], PDO::PARAM_INT);
-$statement->bindValue(':straatnaam', $_POST['straatnaam'], PDO::PARAM_STR);
-$statement->bindValue(':huisnummer', $_POST['huisnummer'], PDO::PARAM_INT);
-$statement->bindValue(':woonplaats', $_POST['woonplaats'], PDO::PARAM_STR);
-$statement->bindValue(':postcode', $_POST['postcode'], PDO::PARAM_STR);
-$statement->bindValue(':landnaam', $_POST['landnaam'], PDO::PARAM_STR);
+$statement->bindValue(':achtbaan', $_POST['achtbaan'], PDO::PARAM_STR);
+$statement->bindValue(':pretpark', $_POST['pretpark'], PDO::PARAM_STR);
+$statement->bindValue(':land', $_POST['land'], PDO::PARAM_STR);
+$statement->bindValue(':snelheid', $_POST['snelheid'], PDO::PARAM_INT);
+$statement->bindValue(':hoogte', $_POST['hoogte'], PDO::PARAM_INT);
+$statement->bindValue(':datum', $_POST['datum'], PDO::PARAM_STR);
+$statement->bindValue(':cijfer', $_POST['cijfer'], PDO::PARAM_INT);
 
 $statement->execute();
 

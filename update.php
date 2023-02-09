@@ -17,30 +17,26 @@ try {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
-    $sql = "UPDATE Persoon
-            SET    Voornaam = :voornaam
-                   ,Tussenvoegsel = :tussenvoegsel
-                   ,Achternaam = :achternaam
-                   ,telefoonnummer = :telefoonnummer
-                   ,straatnaam = :straatnaam
-                   ,huisnummer = :huisnummer
-                   ,woonplaats = :woonplaats
-                   ,postcode = :postcode
-                   ,landnaam = :landnaam
+    $sql = "UPDATE achtbaan
+            SET    achtbaan = :achtbaan
+                   ,pretpark = :pretpark
+                   ,land = :land
+                   ,snelheid = :snelheid
+                   ,hoogte = :hoogte
+                   ,datum = :datum
+                   ,cijfer = :cijfer
             WHERE Id = :id;";
 
     $statement = $pdo->prepare($sql);
 
     $statement->bindValue(':id', $_POST['id'], PDO::PARAM_INT);
-    $statement->bindValue(':voornaam', $_POST['firstname'], PDO::PARAM_STR);
-    $statement->bindValue(':tussenvoegsel', $_POST['infix'], PDO::PARAM_STR);
-    $statement->bindValue(':achternaam', $_POST['lastname'], PDO::PARAM_STR);
-    $statement->bindValue(':telefoonnummer', $_POST['telefoonnummer'], PDO::PARAM_INT);
-    $statement->bindValue(':straatnaam', $_POST['straatnaam'], PDO::PARAM_STR);
-    $statement->bindValue(':huisnummer', $_POST['huisnummer'], PDO::PARAM_INT);
-    $statement->bindValue(':woonplaats', $_POST['woonplaats'], PDO::PARAM_STR);
-    $statement->bindValue(':postcode', $_POST['postcode'], PDO::PARAM_STR);
-    $statement->bindValue(':landnaam', $_POST['landnaam'], PDO::PARAM_STR);
+    $statement->bindValue(':achtbaan', $_POST['achtbaan'], PDO::PARAM_STR);
+    $statement->bindValue(':pretpark', $_POST['pretpark'], PDO::PARAM_STR);
+    $statement->bindValue(':land', $_POST['land'], PDO::PARAM_STR);
+    $statement->bindValue(':snelheid', $_POST['snelheid'], PDO::PARAM_INT);
+    $statement->bindValue(':hoogte', $_POST['hoogte'], PDO::PARAM_INT);
+    $statement->bindValue(':datum', $_POST['datum'], PDO::PARAM_STR);
+    $statement->bindValue(':cijfer', $_POST['cijfer'], PDO::PARAM_INT);
 
     $statement->execute();
 
@@ -55,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } 
 
 $sql = "SELECT Id
-              ,Voornaam as VN
-              ,Tussenvoegsel as TV
-              ,Achternaam as AN
-        FROM Persoon
+              ,achtbaan as AB
+              ,pretpark as PP
+              ,land as L
+        FROM achtbaan
         WHERE Id = :Id";
 
 $statement = $pdo->prepare($sql);
@@ -86,37 +82,33 @@ $result = $statement->fetch(PDO::FETCH_OBJ);
     <h3>Wijzig het record</h3>
 
     <form action="update.php" method="post">
-        <label for="firstname">Voornaam:</label><br>
-        <input type="text" id="firstname" name="firstname" value="<?= $result->VN ?>"><br>
+        <label for="achtbaan">achtbaan:</label><br>
+        <input type="text" id="achtbaan" name="achtbaan" value="<?= $result->AB ?>"><br>
         <br>
-        <label for="infix">Tussenvoegsel:</label><br>
-        <input type="text" id="infix" name="infix" value="<?= $result->TV ?>"><br>
+        <label for="pretpark">pretpark:</label><br>
+        <input type="text" id="pretpark" name="pretpark" value="<?= $result->PP ?>"><br>
         <br>
-        <label for="lastname">Achternaam:</label><br>
-        <input type="text" id="lastname" name="lastname" value="<?= $result->AN ?>"><br>
+        <label for="land">:land</label><br>
+        <input type="text" id="land" name="land" value="<?= $result->L ?>"><br>
         <br>
-        <label for="telefoonnummer">Telefoonnummer:</label><br>
-        <input type="tel" id="telefoonnummer" name="telefoonnummer"><br>
+        <label for="snelheid">snelheid:</label><br>
+        <input type="number" id="snelheid" name="snelheid"><br>
         <br>
-        <label for="straatnaam">Straatnaam:</label><br>
-        <input type="text" id="straatnaam" name="straatnaam"><br>
+        <label for="hoogte">hoogte:</label><br>
+        <input type="number" id="hoogte" name="hoogte"><br>
         <br>
-        <label for="huisnummer">Huisnummer:</label><br>
-        <input type="text" id="huisnummer" name="huisnummer"><br>
+        <label for="datum">datum:</label><br>
+        <input type="date" id="datum" name="datum"><br>
         <br>
-        <label for="woonplaats">Woonplaats:</label><br>
-        <input type="text" id="woonplaats" name="woonplaats"><br>
-        <br>
-        <label for="postcode">Postcode:</label><br>
-        <input type="text" id="postcode" name="postcode"><br>
-        <br>
-        <label for="landnaam">Landnaam:</label><br>
-        <input type="text" id="landnaam" name="landnaam"><br>
+        <label for="cijfer">cijfer:</label><br>
+        <input type="range" min="1" max="10" step="0.1" value="5" id="cijfer" name="cijfer">
+        <output id="valueDisplay">5</output>
         <br>
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
         <input type="submit" value="Verstuur">
 
     </form>    
 </body>
+    <script src="script.js"></script>
 </html>
 

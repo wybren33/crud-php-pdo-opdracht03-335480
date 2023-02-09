@@ -14,16 +14,14 @@ try {
 }
 
 $sql = "SELECT Id
-                  ,Voornaam
-                  ,Tussenvoegsel
-                  ,Achternaam
-                  ,telefoonnummer
-                  ,straatnaam
-                  ,huisnummer
-                  ,woonplaats
-                  ,postcode
-                  ,landnaam
-            FROM Persoon
+                  ,achtbaan
+                  ,pretpark
+                  ,land
+                  ,snelheid
+                  ,hoogte
+                  ,datum
+                  ,cijfer
+            FROM achtbaan
             ORDER BY Id";
 
 $statement = $pdo->prepare($sql);
@@ -36,15 +34,13 @@ $rows = "";
 foreach ($result as $info) {
     $rows .= "<tr>
                     <td>$info->Id</td>
-                    <td>$info->Voornaam</td>
-                    <td>$info->Tussenvoegsel</td>
-                    <td>$info->Achternaam</td>
-                    <td>$info->telefoonnummer</td>
-                    <td>$info->straatnaam</td>
-                    <td>$info->huisnummer</td>
-                    <td>$info->woonplaats</td>
-                    <td>$info->postcode</td>
-                    <td>$info->landnaam</td>
+                    <td>$info->achtbaan</td>
+                    <td>$info->pretpark</td>
+                    <td>$info->land</td>
+                    <td>$info->snelheid</td>
+                    <td>$info->hoogte</td>
+                    <td>$info->datum</td>
+                    <td>$info->cijfer</td>
                     <td>
                         <a href='delete.php?id={$info->Id}'>
                             <img src='img/b_drop.png' alt='kruis'>
@@ -65,15 +61,13 @@ foreach ($result as $info) {
 <table border="1">
     <thead>
         <th>Id</th>
-        <th>Voornaam</th>
-        <th>Tussenvoegsel</th>
-        <th>Achternaam</th>
-        <th>Telefoonnummer</th>
-        <th>Straatnaam</th>
-        <th>Huisnummer</th>
-        <th>Woonplaats</th>
-        <th>Postcode</th>
-        <th>Landnaam</th>
+        <th>achtbaan</th>
+        <th>pretpark</th>
+        <th>land</th>
+        <th>snelheid</th>
+        <th>hoogte</th>
+        <th>datum</th>
+        <th>cijfer</th>
         <th></th>
         <th></th>
     </thead>

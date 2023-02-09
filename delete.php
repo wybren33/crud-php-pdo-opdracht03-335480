@@ -16,7 +16,7 @@ try {
     echo $e->getMessage();
 }
 
-$sql = "DELETE FROM Persoon
+$sql = "DELETE FROM achtbaan
         WHERE Id = :Id";
 
 $statement = $pdo->prepare($sql);

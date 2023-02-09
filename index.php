@@ -5,48 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <title>PDO CRUD</title>
+    <title>Achtbanen</title>
 </head>
 
 <body>
-    <h3>PDO CRUD</h3>
+    <h3>De 5 snelste achtbanen van Europa</h3>
 
     <form action="create.php" method="post">
-        <label for="firstname">Voornaam:</label><br>
-        <input type="text" id="firstname" name="firstname"><br>
+        <label for="achtbaan">Naam Achtbaan:</label><br>
+        <input type="text" id="achtbaan" name="achtbaan"><br>
         <br>
-        <label for="infix">Tussenvoegsel:</label><br>
-        <input type="text" id="infix" name="infix"><br>
+        <label for="pretpark">Naam Pretpark:</label><br>
+        <input type="text" id="pretpark" name="pretpark"><br>
         <br>
-        <label for="lastname">Achternaam:</label><br>
-        <input type="text" id="lastname" name="lastname"><br>
+        <label for="land">Naam Land:</label><br>
+        <input type="text" id="land" name="land"><br>
         <br>
-        <label for="telefoonnummer">Telefoonnummer:</label><br>
-        <input type="tel" id="telefoonnummer" name="telefoonnummer"><br>
+        <label for="snelheid">Topsnelheid (km/u):</label><br>
+        <input type="number" id="snelheid" name="snelheid"><br>
         <br>
-        <label for="straatnaam">Straatnaam:</label><br>
-        <input type="text" id="straatnaam" name="straatnaam"><br>
+        <label for="hoogte">Hoogte (m):</label><br>
+        <input type="number" id="hoogte" name="hoogte"><br>
         <br>
-        <label for="huisnummer">Huisnummer:</label><br>
-        <input type="text" id="huisnummer" name="huisnummer"><br>
+        <label for="datum">Datum eerste opening:</label><br>
+        <input type="date" id="datum" name="datum"><br>
         <br>
-        <label for="woonplaats">Woonplaats:</label><br>
-        <input type="text" id="woonplaats" name="woonplaats"><br>
+        <label for="cijfer">Cijfer voor achtbaan:</label><br>
+        <input type="range" min="1" max="10" step="0.1" value="5" id="cijfer" name="cijfer">
+        <output id="valueDisplay">5</output>
         <br>
-        <label for="postcode">Postcode:</label><br>
-        <input type="text" id="postcode" name="postcode"><br>
-        <br>
-        <label for="landnaam">Landnaam:</label><br>
-        <input type="text" id="landnaam" name="landnaam"><br>
-        <br>
-        <input type="submit" value="Verstuur">
+        <input value="Sla op" type="submit">
     </form>
 
 
 
 
 </body>
-
+    <script src="script.js"></script>
 </html>
